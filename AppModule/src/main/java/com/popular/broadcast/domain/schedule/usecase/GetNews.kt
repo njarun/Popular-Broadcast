@@ -9,7 +9,7 @@ class GetNews @Inject constructor(private val newsRepository: NewsRepository) {
 
     suspend fun execute(request: NewsRequest): List<News> {
 
-        return getNewsFromLocal(request).also {
+        return getNewsFromLocal(request).let {
 
             val newsList = getNewsFromNetwork(request)
 

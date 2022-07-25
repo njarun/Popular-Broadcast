@@ -38,7 +38,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         getViewBinding().newsRv.run {
 
             layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
             adapter = newsAdapter
         }
     }

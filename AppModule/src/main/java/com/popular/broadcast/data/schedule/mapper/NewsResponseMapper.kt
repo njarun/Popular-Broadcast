@@ -23,6 +23,12 @@ object NewsResponseMapper {
                     result.published_date
                 )
 
+                val imageUrl = if (result.media.isNotEmpty())
+                    if (result.media[0].`media-metadata`.isNotEmpty())
+                        result.media[0].`media-metadata`[0].url
+                    else null
+                else null
+
                 newsList.add(
                     News(
                         result.id,
@@ -30,11 +36,10 @@ object NewsResponseMapper {
                         result.title,
                         result.byline,
                         date,
-                        result.media[0].`media-metadata`[0].url
+                        imageUrl
                     )
                 )
-            }
-            catch (e: Exception) {
+            } catch (e: Exception) {
 
                 e.printStackTrace()
             }

@@ -44,16 +44,6 @@ android {
         }
     }
 
-    signingConfigs {
-
-        release {
-            storeFile file("dch_dummy_key.jks")
-            storePassword 'dchapl'
-            keyAlias 'dch'
-            keyPassword 'dchapl'
-        }
-    }
-
     buildTypes {
 
         release {
@@ -71,8 +61,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com\"")
             buildConfigField("String", "API_KEY", "\"csAgk6etlL6dMxTiTnKQXVrVvfskXk4k\"")
-
-            signingConfig signingConfigs.release
         }
 
         debug {
@@ -82,8 +70,6 @@ android {
 
             buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com\"")
             buildConfigField("String", "API_KEY", "\"csAgk6etlL6dMxTiTnKQXVrVvfskXk4k\"")
-
-            signingConfig signingConfigs.release
         }
     }
 

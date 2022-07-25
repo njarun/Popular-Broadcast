@@ -1,7 +1,5 @@
 package com.popular.broadcast.presentation.home.adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,18 +8,10 @@ import com.popular.broadcast.domain.schedule.model.News
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
-    private val newsList: ArrayList<News> = ArrayList()
-    private lateinit var context: Context
-
-    class NewsViewHolder(binding: LayoutNewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        val title = binding.titleTv
-        val byLine = binding.byLineTv
-    }
+    private var newsList: ArrayList<News> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
 
-        context = parent.context
         val viewBinding = LayoutNewsItemBinding.inflate(LayoutInflater.from(parent.context))
         return NewsViewHolder(viewBinding)
     }
@@ -37,14 +27,21 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     override fun getItemCount(): Int = newsList.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun update(newsList: List<News>) {
 
-        this.newsList.run {
+        val size = this.newsList.size
+        this.newsList.clear()
 
-            clear()
-            addAll(newsList)
-            notifyDataSetChanged()
-        }
+        if(size > 0)
+            notifyItemRangeRemoved(0, size)
+
+        this.newsList.addAll(newsList)
+        notifyItemInserted(0)
+    }
+
+    class NewsViewHolder(binding: LayoutNewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        val title = binding.titleTv
+        val byLine = binding.byLineTv
     }
 }
