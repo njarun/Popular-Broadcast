@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Broadcast</string>
+    <string name="title_home">Home</string>
+    <string name="title_detail">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="popular_news">Popular News</string>
+
+    <string name="error_not_found">Error: Not Found</string>
+    <string name="error_something_went_wrong">Something went wrong</string>
+
+</resources>
