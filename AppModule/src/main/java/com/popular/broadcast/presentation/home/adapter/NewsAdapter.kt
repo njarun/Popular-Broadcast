@@ -16,21 +16,21 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>(), AppInterface {
         this.receiver = receiver
     }
 
+    fun update(newsList: List<News>) {
+
+        this.newsList.clear()
+        this.newsList.addAll(newsList)
+        notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int = newsList.size
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(LayoutNewsItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.bind(this, newsList[position])
-    }
-
-    override fun getItemCount(): Int = newsList.size
-
-    fun update(newsList: List<News>) {
-
-        this.newsList.clear()
-        this.newsList.addAll(newsList)
-        notifyDataSetChanged()
     }
 
     override fun onCallback(vararg any: Any) {

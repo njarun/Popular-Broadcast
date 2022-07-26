@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentHomeBinding
 import com.popular.broadcast.domain.schedule.model.News
@@ -15,7 +16,6 @@ import com.popular.broadcast.presentation.home.adapter.NewsAdapter
 import com.popular.broadcast.presentation.home.state.HomeItemUiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -99,6 +99,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun openNewsDetail(news: News) {
 
-        Timber.d("Open news - " + news.title)
+        val action = HomeFragmentDirections.actionNavigationHomeToNavigationDetail(news)
+        findNavController().navigate(action)
     }
 }

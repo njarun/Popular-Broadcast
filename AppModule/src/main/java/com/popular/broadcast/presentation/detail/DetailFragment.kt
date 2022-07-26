@@ -1,40 +1,27 @@
 package com.popular.broadcast.presentation.detail
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentDetailBinding
+import com.popular.broadcast.presentation.base.BaseFragment
 
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     private lateinit var detailViewModel: DetailViewModel
-    private var _binding: FragmentDetailBinding? = null
 
-    private val binding get() = _binding!!
+    override fun constructViewBinding(): ViewBinding = FragmentDetailBinding.inflate(layoutInflater)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun init(viewBinding: ViewBinding) {
 
         detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
-        _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDetail
-        detailViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-
-        return root
+        initUi()
     }
 
-    override fun onDestroyView() {
+    private fun initUi() {
 
-        super.onDestroyView()
-        _binding = null
+        /*detailViewModel.text.observe(viewLifecycleOwner, Observer {
+            getViewBinding().textDetail.text = it
+        })*/
     }
 }
