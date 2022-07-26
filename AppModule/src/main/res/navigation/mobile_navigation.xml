@@ -27,6 +27,21 @@
             android:name="newsItem"
             app:argType="com.popular.broadcast.domain.schedule.model.News" />
 
+        <action
+            android:id="@+id/action_navigation_detail_to_detailWebFragment"
+            app:destination="@id/detailWebFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailWebFragment"
+        android:name="com.popular.broadcast.presentation.detail.DetailWebFragment"
+        android:label="DetailWebFragment" >
+
+        <argument
+            android:name="newsItem"
+            app:argType="com.popular.broadcast.domain.schedule.model.News" />
+
     </fragment>
 
 </navigation>

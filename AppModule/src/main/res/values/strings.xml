@@ -12,4 +12,10 @@
     <string name="error_something_went_wrong">Something went wrong</string>
     <string name="news_published_updated_date">News published/updated date</string>
 
+    <string name="section">Section:</string>
+    <string name="author">Author:</string>
+    <string name="headline">Headline:</string>
+    <string name="news_abstract">Abstract:</string>
+    <string name="read_from_source">Read from Source</string>
+
 </resources>

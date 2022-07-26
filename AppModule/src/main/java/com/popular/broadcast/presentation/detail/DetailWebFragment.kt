@@ -1,31 +1,17 @@
 package com.popular.broadcast.presentation.detail
 
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentDetailBinding
 import com.popular.broadcast.presentation.base.BaseFragment
 
-class DetailFragment : BaseFragment<FragmentDetailBinding>() {
+class DetailWebFragment : BaseFragment<FragmentDetailBinding>() {
 
-    private lateinit var detailViewModel: DetailViewModel
     private val args: DetailFragmentArgs by navArgs()
 
     override fun constructViewBinding(): ViewBinding = FragmentDetailBinding.inflate(layoutInflater)
 
     override fun init(viewBinding: ViewBinding) {
-
-        detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-
         getViewBinding().news = args.newsItem
-
-        initUi()
-    }
-
-    private fun initUi() {
-
-        /*detailViewModel.text.observe(viewLifecycleOwner, Observer {
-            getViewBinding().textDetail.text = it
-        })*/
     }
 }

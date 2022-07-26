@@ -7,7 +7,9 @@ import kotlinx.parcelize.Parcelize
 class News(val id: Long,
     val url: String,
     val title: String,
+    val summary: String,
     val byline: String,
+    val section: String,
     val updated: Long,
     val thumb: String?,
 ) : Parcelable

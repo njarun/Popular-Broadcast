@@ -10,7 +10,7 @@ object NewsEntityMapper {
         val newsList = ArrayList<News>()
 
         forEach {
-            newsList.add(News(it.id, it.url, it.title, it.byline, it.updated, it.thumb))
+            newsList.add(News(it.id, it.url, it.title, it.summary, it.byline, it.section, it.updated, it.thumb))
         }
 
         return newsList

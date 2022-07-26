@@ -30,11 +30,12 @@ object NewsResponseMapper {
                 else null
 
                 newsList.add(
-                    News(
-                        result.id,
+                    News(result.id,
                         result.url,
                         result.title,
+                        result.abstract,
                         result.byline,
+                        result.section,
                         date,
                         imageUrl
                     )

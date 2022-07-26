@@ -20,5 +20,5 @@ fun View.setVisibility(visible: Boolean) {
 fun ImageView.loadUrlOrPlaceholder(url: String?) {
 
     url?.let { Glide.with(context).load(url).into(this) } ?:
-    Glide.with(context).load(R.mipmap.ic_launcher_round).into(this)
+    Glide.with(context).load(R.mipmap.ic_launcher).into(this)
 }
