@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentHomeBinding
+import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.presentation.base.BaseFragment
 import com.popular.broadcast.presentation.base.state.UiState
 import com.popular.broadcast.presentation.home.adapter.NewsAdapter
@@ -36,7 +37,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initUi() {
 
+        newsAdapter.registerForItemClick(this)
+
         getViewBinding().newsRv.run {
+
             adapter = newsAdapter
         }
     }
@@ -79,10 +83,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun showLoading(state: Boolean) {
 
-        Timber.d("showLoading - $state")
-
         getViewBinding().run {
             loading = state
         }
+    }
+
+    override fun onCallback(vararg any: Any) {
+
+        if(any.isNotEmpty()) {
+
+            val news = any[0] as News
+            openNewsDetail(news)
+        }
+    }
+
+    private fun openNewsDetail(news: News) {
+
+        Timber.d("Open news - " + news.title)
     }
 }

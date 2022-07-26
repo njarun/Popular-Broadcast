@@ -11,15 +11,23 @@
             name="news"
             type="com.popular.broadcast.domain.schedule.model.News" />
 
+        <variable
+            name="callback"
+            type="com.popular.broadcast.presentation.base.handler.AppInterface" />
+
     </data>
 
     <RelativeLayout
+        android:id="@+id/item_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:onClick="@{(item_root) -> callback.onCallback(news)}">
+
+<!--    android:onClick="@{(iv_play_btn) -> com.dch.aplayer.app_ui.binders.MediaPlayerKt.playPauseMedia(iv_play_btn, mediaModel)}"-->
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/news_thumb_iv"

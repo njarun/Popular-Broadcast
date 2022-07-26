@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.popular.broadcast.presentation.base.handler.AppInterface
 
-abstract class BaseFragment<T> : Fragment() {
+abstract class BaseFragment<T> : Fragment(), AppInterface {
 
     private var viewBinding: ViewBinding? = null
 
@@ -31,4 +32,8 @@ abstract class BaseFragment<T> : Fragment() {
 
     abstract fun constructViewBinding(): ViewBinding
     abstract fun init(viewBinding: ViewBinding)
+
+    override fun onCallback(vararg any: Any) {
+
+    }
 }
