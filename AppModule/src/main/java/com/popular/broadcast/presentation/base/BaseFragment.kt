@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.popular.broadcast.presentation.HomeActivity
+import com.popular.broadcast.presentation.MainActivity
 import com.popular.broadcast.presentation.base.handler.AppInterface
 import com.popular.broadcast.presentation.home.HomeFragment
 
@@ -39,8 +39,8 @@ abstract class BaseFragment<T> : Fragment(), AppInterface {
 
         super.onStart()
 
-        if(activity is HomeActivity) {
-            (activity as HomeActivity).binding.actionBar.rightIcon.visibility =
+        if(activity is MainActivity) {
+            (activity as MainActivity).binding.actionBar.rightIcon.visibility =
                 determineActionItemsVisibility()
         }
     }

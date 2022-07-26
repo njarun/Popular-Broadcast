@@ -104,6 +104,14 @@
 
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/md_blue_grey_200"/>
+
                 <TextView
                     android:id="@+id/title_label_tv"
                     android:layout_width="wrap_content"
@@ -150,7 +158,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
                     android:textAllCaps="false"
+                    app:on_click_open_custom_tab="@{news.url}"
                     android:text="@string/read_from_source"
                     android:layout_marginBottom="20dp"/>
 
