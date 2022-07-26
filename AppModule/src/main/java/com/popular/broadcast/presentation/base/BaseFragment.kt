@@ -40,8 +40,16 @@ abstract class BaseFragment<T> : Fragment(), AppInterface {
         super.onStart()
 
         if(activity is MainActivity) {
-            (activity as MainActivity).binding.actionBar.rightIcon.visibility =
-                determineActionItemsVisibility()
+
+            val iconsVisibility = determineActionItemsVisibility()
+
+            (activity as MainActivity).apply {
+
+                binding.actionBar.leftIcon.visibility = iconsVisibility
+                binding.actionBar.rightIcon.visibility = iconsVisibility
+
+                showHideMenu(iconsVisibility == View.VISIBLE)
+            }
         }
     }
 

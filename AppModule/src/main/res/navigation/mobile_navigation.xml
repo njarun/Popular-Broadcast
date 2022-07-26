@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.popular.broadcast.presentation.home.HomeFragment"
-        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
 
         <action
@@ -20,23 +19,7 @@
     <fragment
         android:id="@+id/navigation_detail"
         android:name="com.popular.broadcast.presentation.detail.DetailFragment"
-        android:label="@string/title_detail"
         tools:layout="@layout/fragment_detail" >
-
-        <argument
-            android:name="newsItem"
-            app:argType="com.popular.broadcast.domain.schedule.model.News" />
-
-        <action
-            android:id="@+id/action_navigation_detail_to_detailWebFragment"
-            app:destination="@id/detailWebFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/detailWebFragment"
-        android:name="com.popular.broadcast.presentation.detail.DetailWebFragment"
-        android:label="DetailWebFragment" >
 
         <argument
             android:name="newsItem"

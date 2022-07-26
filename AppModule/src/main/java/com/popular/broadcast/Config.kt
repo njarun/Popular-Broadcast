@@ -1,3 +1,6 @@
 package com.popular.broadcast
 
-object Config
+object Config {
+
+    const val NEWS_SECTION = "all-sections"
+}

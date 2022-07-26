@@ -2,7 +2,9 @@ package com.popular.broadcast.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.popular.broadcast.Config
 import com.popular.broadcast.data.networking.CoroutineDispatcherProvider
+import com.popular.broadcast.data.session.SessionContext
 import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.domain.schedule.model.NewsRequest
 import com.popular.broadcast.domain.schedule.usecase.GetNews
@@ -19,6 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
         private val getNews: GetNews,
+        private val sessionContext: SessionContext,
         private val coroutineDispatcherProvider: CoroutineDispatcherProvider) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Empty)
@@ -32,8 +35,8 @@ class HomeViewModel @Inject constructor(
 
             try {
 
-                val section = "all-sections"
-                val period = 7
+                val section = Config.NEWS_SECTION
+                val period = sessionContext.getNewsFetchPeriod()
                 val requestParam = NewsRequest(section, period)
 
                 getNews.collectNews(requestParam).collect {

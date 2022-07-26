@@ -20,6 +20,10 @@ object TimeUtil {
     fun getDateFormatted(date: Long): String =
         SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date(date))
 
+    @JvmStatic
+    fun getDatePrettied(date: Long): String =
+        SimpleDateFormat("dd MMM, yyyy", Locale.getDefault()).format(Date(date))
+
     @SuppressLint("SimpleDateFormat")
     fun getTimestamp(dateString: String, plusDay: Int): Long {
         val c = Calendar.getInstance()
