@@ -39,7 +39,10 @@ object NewsResponseMapper {
                         imageUrl
                     )
                 )
-            } catch (e: Exception) {
+
+                newsList.sortByDescending { it.updated }
+            }
+            catch (e: Exception) {
 
                 e.printStackTrace()
             }

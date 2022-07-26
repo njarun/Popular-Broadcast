@@ -24,7 +24,13 @@ class LocalNewsEntityData @Inject constructor(private val newsDao: NewsDao) : Ne
 
     override suspend fun saveNews(newsList: List<News>) {
 
+        clearNews()
+
         val newsEntities = newsList.toNewsEntities()
         newsDao.insert(newsEntities)
+    }
+
+    private fun clearNews() {
+        newsDao.delete()
     }
 }

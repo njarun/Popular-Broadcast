@@ -6,8 +6,7 @@ import com.popular.broadcast.data.schedule.source.network.NetworkNewsEntityData
 import com.popular.broadcast.util.Source
 import javax.inject.Inject
 
-class NewsFactory @Inject constructor(
-    private val networkNewsEntityData: NetworkNewsEntityData,
+class NewsFactory @Inject constructor(private val networkNewsEntityData: NetworkNewsEntityData,
     private val localNewsEntityData: LocalNewsEntityData) {
 
     fun create(source: Source): NewsEntityData {

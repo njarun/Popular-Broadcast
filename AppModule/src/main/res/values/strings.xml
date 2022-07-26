@@ -5,9 +5,11 @@
     <string name="title_detail">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="ny_times_popular">NY Times Most Popular</string>
     <string name="popular_news">Popular News</string>
 
     <string name="error_not_found">Error: Not Found</string>
     <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="news_published_updated_date">News published/updated date</string>
 
 </resources>

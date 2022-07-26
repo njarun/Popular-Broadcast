@@ -6,11 +6,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentHomeBinding
 import com.popular.broadcast.presentation.base.BaseFragment
+import com.popular.broadcast.presentation.base.state.UiState
 import com.popular.broadcast.presentation.home.adapter.NewsAdapter
+import com.popular.broadcast.presentation.home.state.HomeItemUiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -36,8 +37,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun initUi() {
 
         getViewBinding().newsRv.run {
-
-            layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
         }
     }
@@ -52,9 +51,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                     when (state) {
 
-                        is HomeViewModel.NewsUiState.Loaded -> onLoaded(state.itemState)
-                        is HomeViewModel.NewsUiState.Error -> showError(state.message)
-                        else -> showLoading()
+                        is UiState.Loaded -> onLoaded(state.itemState as HomeItemUiState)
+                        is UiState.Error -> showError(state.message)
+                        else -> showLoading(true)
                     }
                 }
             }
@@ -65,18 +64,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         homeItemUiState.run {
 
-            getViewBinding().sectionTv.text = section
             newsAdapter.update(newsList)
         }
-    }
 
-    private fun showLoading() {
-
-        Timber.d("showLoading")
+        showLoading(false)
     }
 
     private fun showError(@StringRes stringRes: Int) {
 
         Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
+
+        showLoading(false)
+    }
+
+    private fun showLoading(state: Boolean) {
+
+        Timber.d("showLoading - $state")
+
+        getViewBinding().run {
+            loading = state
+        }
     }
 }

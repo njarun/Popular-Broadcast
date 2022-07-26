@@ -9,9 +9,12 @@ import com.popular.broadcast.data.database.model.NewsEntity
 @Dao
 interface NewsDao {
 
+    @Query("SELECT * FROM news WHERE updated >= :to ORDER BY updated DESC")
+    fun getNews(to: Long): List<NewsEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(news: List<NewsEntity>)
 
-    @Query("SELECT * FROM news WHERE updated >= :to")
-    fun getNews(to: Long): List<NewsEntity>
+    @Query("DELETE FROM news")
+    fun delete()
 }

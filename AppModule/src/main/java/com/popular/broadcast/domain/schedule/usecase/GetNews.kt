@@ -3,19 +3,25 @@ package com.popular.broadcast.domain.schedule.usecase
 import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.domain.schedule.model.NewsRequest
 import com.popular.broadcast.domain.schedule.repository.NewsRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetNews @Inject constructor(private val newsRepository: NewsRepository) {
 
-    suspend fun execute(request: NewsRequest): List<News> {
+    suspend fun collectNews(request: NewsRequest): Flow<Any> = flow {
 
-        return getNewsFromLocal(request).let {
+        val localNews = getNewsFromLocal(request)
 
-            val newsList = getNewsFromNetwork(request)
+        localNews.isNotEmpty().run { emit(localNews) }.also {
 
-            newsRepository.saveNews(newsList)
+            //emit(UiState.Loading)
 
-            getNewsFromLocal(request)
+            val networkNews = getNewsFromNetwork(request)
+
+            newsRepository.saveNews(networkNews)
+
+            emit(networkNews)
         }
     }
 
