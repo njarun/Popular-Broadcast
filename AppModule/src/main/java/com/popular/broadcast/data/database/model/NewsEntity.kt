@@ -13,5 +13,6 @@ class NewsEntity(
     val byline: String,
     val section: String,
     val updated: Long,
-    val thumb: String?
+    val thumb: String?,
+    val banner: String?
 )

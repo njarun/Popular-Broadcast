@@ -1,6 +1,7 @@
 package com.popular.broadcast.data.schedule.mapper
 
 import com.popular.broadcast.data.schedule.model.NewsResponse
+import com.popular.broadcast.data.schedule.model.Result
 import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.util.TimeUtil
 
@@ -23,11 +24,8 @@ object NewsResponseMapper {
                     result.published_date
                 )
 
-                val imageUrl = if (result.media.isNotEmpty())
-                    if (result.media[0].`media-metadata`.isNotEmpty())
-                        result.media[0].`media-metadata`[0].url
-                    else null
-                else null
+                val thumbUrl = extractMediaUrl(result, true)
+                val banner = extractMediaUrl(result, false)
 
                 newsList.add(
                     News(result.id,
@@ -37,7 +35,8 @@ object NewsResponseMapper {
                         result.byline,
                         result.section,
                         date,
-                        imageUrl
+                        thumbUrl,
+                        banner
                     )
                 )
 
@@ -51,4 +50,11 @@ object NewsResponseMapper {
 
         return newsList
     }
+
+    private fun extractMediaUrl(result: Result, isThumb: Boolean) =
+        if (result.media.isNotEmpty())
+            if (result.media[if(isThumb) 0 else result.media.size - 1].`media-metadata`.isNotEmpty())
+                result.media[if(isThumb) 0 else result.media.size - 1].`media-metadata`[if(isThumb) 0 else result.media[result.media.size - 1].`media-metadata`.size - 1].url
+            else null
+        else null
 }

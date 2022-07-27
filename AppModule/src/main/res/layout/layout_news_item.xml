@@ -35,7 +35,7 @@
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:load_url_or_placeholder="@{news.thumb}"
+            app:load_url_or_placeholder="@{news.thumb != null ? news.thumb : news.banner}"
             app:shapeAppearanceOverlay="@style/circleImageView"
             tools:src="@tools:sample/avatars" />
 

@@ -30,7 +30,7 @@
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
-                app:load_url_or_placeholder="@{news.thumb}" />
+                app:load_url_or_placeholder="@{news.banner != null ? news.banner : news.thumb}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
