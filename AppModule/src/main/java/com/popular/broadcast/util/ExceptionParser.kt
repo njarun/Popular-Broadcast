@@ -19,5 +19,5 @@ object ExceptionParser {
         }
     }
 
-    private fun generalError() = R.string.error_something_went_wrong
+    private fun generalError() = R.string.network_fetch_failed
 }

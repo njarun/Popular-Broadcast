@@ -27,7 +27,12 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Empty)
     val uiState: StateFlow<UiState> = _uiState
 
-    fun getNews() {
+    init {
+
+        fetchNews()
+    }
+
+    private fun fetchNews() {
 
         _uiState.value = UiState.Loading
 
@@ -49,9 +54,6 @@ class HomeViewModel @Inject constructor(
                         UiState.Loaded(HomeItemUiState(section, it as List<News>))
                     }
                 }
-
-                /*val result = getNews.execute(requestParam)
-                _uiState.value = UiState.Loaded(HomeItemUiState(section, result))*/
             }
             catch (error: Exception) {
 

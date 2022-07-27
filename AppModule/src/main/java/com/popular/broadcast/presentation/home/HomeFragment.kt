@@ -30,7 +30,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun init(viewBinding: ViewBinding) {
 
-        homeViewModel.getNews()
         initUi()
         fetchNews()
     }
@@ -68,7 +67,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         homeItemUiState.run {
 
+            val recyclerViewState = getViewBinding().newsRv.layoutManager?.onSaveInstanceState()
             newsAdapter.update(newsList)
+            getViewBinding().newsRv.layoutManager?.onRestoreInstanceState(recyclerViewState)
         }
 
         showLoading(false)

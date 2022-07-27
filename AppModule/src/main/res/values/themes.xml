@@ -30,7 +30,11 @@
 
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <!--Material Circle Image style-->
     <style name="circleImageView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
