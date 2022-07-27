@@ -18,7 +18,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    var optionsMenu: Menu? = null
+    private var optionsMenu: Menu? = null
     private lateinit var navController: NavController
 
     @Inject
@@ -58,13 +58,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun showHideMenu(state: Boolean) {
+        optionsMenu?.setGroupVisible(R.id.period_group, state)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.menu_home, menu)
 
-        val period = sessionContext.getNewsFetchPeriod()
-
-        when(period) {
+        when(sessionContext.getNewsFetchPeriod()) {
 
             1 -> {
                 menu.findItem(R.id.period_one_day).isChecked = true
@@ -118,10 +120,6 @@ class MainActivity : AppCompatActivity() {
         sessionContext.setNewsFetchPeriod(period)
 
         reloadHome()
-    }
-
-    fun showHideMenu(state: Boolean) {
-        optionsMenu?.setGroupVisible(R.id.period_group, state)
     }
 
     private fun reloadHome() {

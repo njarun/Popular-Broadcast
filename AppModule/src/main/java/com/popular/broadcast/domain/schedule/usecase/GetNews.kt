@@ -1,44 +1,34 @@
 package com.popular.broadcast.domain.schedule.usecase
 
+import com.popular.broadcast.data.networking.CoroutineDispatcherProvider
 import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.domain.schedule.model.NewsRequest
 import com.popular.broadcast.domain.schedule.repository.NewsRepository
-import com.popular.broadcast.presentation.base.state.UiState
-import com.popular.broadcast.util.ExceptionParser
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class GetNews @Inject constructor(private val newsRepository: NewsRepository) {
+class GetNews @Inject constructor(private val newsRepository: NewsRepository,
+              private val coroutineDispatcherProvider: CoroutineDispatcherProvider) {
 
-    suspend fun collectNews(request: NewsRequest): Flow<Any> = flow {
+    fun fetchNews(request: NewsRequest) = flow {
 
         val localNews = getNewsFromLocal(request)
 
         if(localNews.isNotEmpty()) {
             emit(localNews)
         }
-        else emit(UiState.Loading)
 
-        try {
+        emit(true) //to show the fetch progress
 
-            val networkNews = getNewsFromNetwork(request)
+        val networkNews = getNewsFromNetwork(request)
 
-            if(networkNews.isNotEmpty()) {
-
-                newsRepository.saveNews(networkNews)
-
-                emit(networkNews)
-            }
-        }
-        catch (e: Exception) {
-
-            e.printStackTrace()
-
-            if(localNews.isEmpty())
-                emit(UiState.Error(ExceptionParser.getMessage(e)))
+        if(networkNews.isNotEmpty()) { //Else it will be network or data error, which will be caught in the VM
+            newsRepository.saveNews(networkNews)
+            emit(networkNews)
         }
     }
+    .flowOn(coroutineDispatcherProvider.IO())
 
     private suspend fun getNewsFromLocal(param: NewsRequest): List<News> {
         return newsRepository.getNewsFromLocal(param)

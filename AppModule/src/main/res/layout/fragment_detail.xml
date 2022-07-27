@@ -30,7 +30,7 @@
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
-                app:load_url_or_placeholder="@{news.banner != null ? news.banner : news.thumb}" />
+                app:loadUrlOrPlaceholder="@{news.banner != null ? news.banner : news.thumb}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                     android:text="@string/read_from_source"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    app:on_click_open_custom_tab="@{news.url}" />
+                    app:openCustomTabOnClick="@{news.url}" />
 
             </LinearLayout>
 

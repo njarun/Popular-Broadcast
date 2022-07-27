@@ -1,4 +1,4 @@
-package com.dch.aplayer.presentation.splash.binders
+package com.popular.broadcast.presentation.base
 
 import android.content.Intent
 import android.net.Uri
@@ -6,24 +6,42 @@ import android.view.View
 import android.widget.ImageView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.BindingAdapter
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.popular.broadcast.R
+import com.popular.broadcast.presentation.base.list.BaseAdapter
+import com.popular.broadcast.presentation.base.list.BaseListItem
 
-@BindingAdapter("mark_refreshing")
-fun SwipeRefreshLayout.markRefreshing(visible: Boolean) {
-    isRefreshing = visible
+@BindingAdapter("manageState")
+fun SwipeRefreshLayout.manageState(state: Boolean) {
+    isRefreshing = state
 }
 
-@BindingAdapter("load_url_or_placeholder")
+@BindingAdapter("setAdapter")
+fun setAdapter(recyclerView: RecyclerView, adapter: BaseAdapter<ViewDataBinding, BaseListItem>?) {
+
+    adapter?.let {
+        recyclerView.adapter = it
+    }
+}
+
+@BindingAdapter("setDataSet") @Suppress("UNCHECKED_CAST")
+fun setDataSet(recyclerView: RecyclerView, list: List<BaseListItem>?) {
+    val adapter = recyclerView.adapter as BaseAdapter<ViewDataBinding, BaseListItem>?
+    adapter?.updateData(list ?: listOf())
+}
+
+@BindingAdapter("loadUrlOrPlaceholder")
 fun ImageView.loadUrlOrPlaceholder(url: String?) {
 
     url?.let { Glide.with(context).load(url).into(this) } ?:
     Glide.with(context).load(R.mipmap.ic_launcher).into(this)
 }
 
-@BindingAdapter("on_click_open_custom_tab")
-fun View.onClickOpenCustomTab(url: String) {
+@BindingAdapter("openCustomTabOnClick")
+fun View.openCustomTabOnClick(url: String) {
 
     setOnClickListener {
 

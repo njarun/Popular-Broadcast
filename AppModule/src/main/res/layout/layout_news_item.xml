@@ -12,8 +12,8 @@
             type="com.popular.broadcast.domain.schedule.model.News" />
 
         <variable
-            name="callback"
-            type="com.popular.broadcast.presentation.base.handler.AppInterface" />
+            name="listener"
+            type="com.popular.broadcast.presentation.home.NewsListener" />
 
     </data>
 
@@ -25,7 +25,7 @@
         android:layout_marginBottom="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:onClick="@{(item_root) -> callback.onCallback(news)}">
+        android:onClick="@{() -> listener.onNewsClicked(news)}">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/news_thumb_iv"
@@ -35,7 +35,7 @@
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:load_url_or_placeholder="@{news.thumb != null ? news.thumb : news.banner}"
+            app:loadUrlOrPlaceholder="@{news.thumb != null ? news.thumb : news.banner}"
             app:shapeAppearanceOverlay="@style/circleImageView"
             tools:src="@tools:sample/avatars" />
 

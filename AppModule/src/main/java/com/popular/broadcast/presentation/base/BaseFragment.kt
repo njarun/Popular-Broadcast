@@ -9,10 +9,9 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.presentation.MainActivity
-import com.popular.broadcast.presentation.base.handler.AppInterface
 import com.popular.broadcast.presentation.home.HomeFragment
 
-abstract class BaseFragment<T> : Fragment(), AppInterface {
+abstract class BaseFragment<T> : Fragment() {
 
     private var viewBinding: ViewBinding? = null
     private var toast: Toast? = null
@@ -56,14 +55,23 @@ abstract class BaseFragment<T> : Fragment(), AppInterface {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        hideToast()
+    }
+
     private fun determineActionItemsVisibility() =
         if (this is HomeFragment) View.VISIBLE else View.GONE
 
     protected fun showToast(@StringRes stringRes: Int) {
+        showToast(getString(stringRes))
+    }
+
+    protected fun showToast(message: String) {
 
         hideToast()
 
-        toast = Toast.makeText(requireContext(), stringRes, Toast.LENGTH_LONG)
+        toast = Toast.makeText(requireContext(), message, Toast.LENGTH_LONG)
         toast!!.show()
     }
 
@@ -74,9 +82,5 @@ abstract class BaseFragment<T> : Fragment(), AppInterface {
             toast!!.cancel()
             toast = null
         }
-    }
-
-    override fun onCallback(vararg any: Any) {
-
     }
 }

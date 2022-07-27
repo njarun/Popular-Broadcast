@@ -9,8 +9,12 @@
         <import type="android.view.View" />
 
         <variable
-            name="loading"
-            type="Boolean" />
+            name="viewModel"
+            type="com.popular.broadcast.presentation.home.HomeViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.popular.broadcast.presentation.home.NewsAdapterNew" />
 
     </data>
 
@@ -23,7 +27,8 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mark_refreshing="@{loading}">
+            app:onRefreshListener="@{() -> viewModel.onRefresh()}"
+            app:manageState="@{viewModel.viewRefreshState}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_rv"
@@ -32,6 +37,8 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:setAdapter="@{adapter}"
+                app:setDataSet="@{viewModel.newsList}"
                 tools:listitem="@layout/layout_news_item"
                 android:layout_centerHorizontal="true"/>
 

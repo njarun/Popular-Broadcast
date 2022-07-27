@@ -7,10 +7,10 @@ import java.util.*
 object TimeUtil {
 
     fun setTime(dateString: String, time: String): Long {
-        return getTimeMilis(dateString, time)
+        return getTimeMillis(dateString, time)
     }
 
-    fun Long.getTimeFormated(): String =
+    fun Long.getTimeFormatted(): String =
         SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(this))
 
     fun getDateFormatted(date: Date): String =
@@ -59,7 +59,7 @@ object TimeUtil {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun getTimeMilis(dayTimestamp: String, time: String): Long {
+    private fun getTimeMillis(dayTimestamp: String, time: String): Long {
         val dateTime = dayTimestamp.plus(" ").plus(time)
         return SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dateTime)?.time ?: 0
     }
