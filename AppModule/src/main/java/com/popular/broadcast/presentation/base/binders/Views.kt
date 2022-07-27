@@ -6,17 +6,13 @@ import android.view.View
 import android.widget.ImageView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.popular.broadcast.R
 
-@BindingAdapter("android:visibility")
-fun View.setVisibility(visible: Boolean) {
-
-    visibility = if (visible) {
-        View.VISIBLE
-    } else {
-        View.GONE
-    }
+@BindingAdapter("mark_refreshing")
+fun SwipeRefreshLayout.markRefreshing(visible: Boolean) {
+    isRefreshing = visible
 }
 
 @BindingAdapter("load_url_or_placeholder")

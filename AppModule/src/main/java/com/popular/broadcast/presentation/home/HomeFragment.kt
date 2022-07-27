@@ -56,8 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun loadNewsToUi() {
 
-        showToast(R.string.fetching_news_from_server)
-
         lifecycleScope.launch {
 
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -86,7 +84,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun refreshNewsList(alwaysNotJustError: Boolean) {
 
         if(alwaysNotJustError || homeViewModel.uiState.value is UiState.Error) {
+
             homeViewModel.fetchNews()
+            showToast(R.string.fetching_news_from_server)
         }
     }
 
@@ -105,13 +105,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun showLoading(state: Boolean) {
 
         getViewBinding().run {
-
             loading = state
-
-            swipeRefreshLayout.run {
-
-                isRefreshing = state
-            }
         }
     }
 
@@ -125,6 +119,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun openNewsDetail(news: News) {
+
+        hideToast()
 
         val action = HomeFragmentDirections.actionNavigationHomeToNavigationDetail(news)
         findNavController().navigate(action)
