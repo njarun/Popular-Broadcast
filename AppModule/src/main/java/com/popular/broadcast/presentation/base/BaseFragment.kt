@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.presentation.MainActivity
@@ -13,6 +15,7 @@ import com.popular.broadcast.presentation.home.HomeFragment
 abstract class BaseFragment<T> : Fragment(), AppInterface {
 
     private var viewBinding: ViewBinding? = null
+    private var toast: Toast? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +58,23 @@ abstract class BaseFragment<T> : Fragment(), AppInterface {
 
     private fun determineActionItemsVisibility() =
         if (this is HomeFragment) View.VISIBLE else View.GONE
+
+    protected fun showToast(@StringRes stringRes: Int) {
+
+        hideToast()
+
+        toast = Toast.makeText(requireContext(), stringRes, Toast.LENGTH_LONG)
+        toast!!.show()
+    }
+
+    protected fun hideToast() {
+
+        if(toast != null) {
+
+            toast!!.cancel()
+            toast = null
+        }
+    }
 
     override fun onCallback(vararg any: Any) {
 

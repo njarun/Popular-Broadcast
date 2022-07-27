@@ -23,9 +23,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>(), AppInterface {
         this.newsList.clear()
         this.newsList.addAll(newsList)
 
-        //if(size == this.newsList.size)
-        //    notifyItemRangeChanged(0, size);
-        /*else*/ notifyDataSetChanged()
+        if(size == this.newsList.size)
+            notifyItemRangeChanged(0, size)
+        else notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = newsList.size

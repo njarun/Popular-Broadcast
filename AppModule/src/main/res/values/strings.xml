@@ -18,5 +18,6 @@
     <string name="one_day">1 day news</string>
     <string name="seven_days">7 days news</string>
     <string name="thirty_days">30 days news</string>
+    <string name="fetching_news_from_server">Refreshing news from Server</string>
 
 </resources>

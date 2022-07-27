@@ -1,13 +1,12 @@
 package com.popular.broadcast.presentation.home
 
-import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.popular.broadcast.R
 import com.popular.broadcast.databinding.FragmentHomeBinding
 import com.popular.broadcast.domain.schedule.model.News
 import com.popular.broadcast.presentation.base.BaseFragment
@@ -31,20 +30,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun init(viewBinding: ViewBinding) {
 
         initUi()
-        fetchNews()
+        loadNewsToUi()
+    }
+
+    override fun onResume() {
+
+        super.onResume()
+
+        refreshNewsList(false)
     }
 
     private fun initUi() {
 
         newsAdapter.registerForItemClick(this)
 
-        getViewBinding().newsRv.run {
+        getViewBinding().run {
 
-            adapter = newsAdapter
+            newsRv.adapter = newsAdapter
+            swipeRefreshLayout.setOnRefreshListener {
+
+                refreshNewsList(true)
+            }
         }
     }
 
-    private fun fetchNews() {
+    private fun loadNewsToUi() {
+
+        showToast(R.string.fetching_news_from_server)
 
         lifecycleScope.launch {
 
@@ -55,11 +67,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     when (state) {
 
                         is UiState.Loaded -> onLoaded(state.itemState as HomeItemUiState)
-                        is UiState.Error -> showError(state.message)
-                        else -> showLoading(true)
+                        is UiState.Error -> {
+
+                            showToast(state.message)
+                            showLoading(false)
+                        }
+                        else -> {
+
+                            hideToast()
+                            showLoading(true)
+                        }
                     }
                 }
             }
+        }
+    }
+
+    private fun refreshNewsList(alwaysNotJustError: Boolean) {
+
+        if(alwaysNotJustError || homeViewModel.uiState.value is UiState.Error) {
+            homeViewModel.fetchNews()
         }
     }
 
@@ -75,17 +102,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         showLoading(false)
     }
 
-    private fun showError(@StringRes stringRes: Int) {
-
-        Toast.makeText(requireContext(), stringRes, Toast.LENGTH_SHORT).show()
-
-        showLoading(false)
-    }
-
     private fun showLoading(state: Boolean) {
 
         getViewBinding().run {
+
             loading = state
+
+            swipeRefreshLayout.run {
+
+                isRefreshing = state
+            }
         }
     }
 

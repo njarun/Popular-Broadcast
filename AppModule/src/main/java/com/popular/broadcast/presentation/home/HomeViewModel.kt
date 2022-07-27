@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
         fetchNews()
     }
 
-    private fun fetchNews() {
+    fun fetchNews() {
 
         _uiState.value = UiState.Loading
 
