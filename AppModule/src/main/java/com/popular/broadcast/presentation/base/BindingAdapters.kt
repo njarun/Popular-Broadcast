@@ -10,10 +10,10 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.bumptech.glide.Glide
 import com.popular.broadcast.R
 import com.popular.broadcast.presentation.base.list.BaseAdapter
 import com.popular.broadcast.presentation.base.list.BaseListItem
+import com.popular.broadcast.util.GlideApp
 
 @BindingAdapter("showToast")
 fun View.showToast(message: String?) {
@@ -39,7 +39,8 @@ fun setAdapter(recyclerView: RecyclerView, adapter: BaseAdapter<ViewDataBinding,
     }
 }
 
-@BindingAdapter("setDataSet") @Suppress("UNCHECKED_CAST")
+@BindingAdapter("setDataSet")
+@Suppress("UNCHECKED_CAST")
 fun setDataSet(recyclerView: RecyclerView, list: List<BaseListItem>?) {
     val adapter = recyclerView.adapter as BaseAdapter<ViewDataBinding, BaseListItem>?
     adapter?.updateData(list ?: listOf())
@@ -48,8 +49,8 @@ fun setDataSet(recyclerView: RecyclerView, list: List<BaseListItem>?) {
 @BindingAdapter("loadUrlOrPlaceholder")
 fun ImageView.loadUrlOrPlaceholder(url: String?) {
 
-    url?.let { Glide.with(context).load(url).into(this) } ?:
-    Glide.with(context).load(R.mipmap.ic_launcher).into(this)
+    url?.let { GlideApp.with(context).load(url).into(this) } ?: GlideApp.with(context)
+        .load(R.mipmap.ic_launcher).into(this)
 }
 
 @BindingAdapter("openCustomTabOnClick")
@@ -59,17 +60,15 @@ fun View.openCustomTabOnClick(url: String) {
 
         try {
 
-            val customTabsIntent : CustomTabsIntent = CustomTabsIntent.Builder().build()
+            val customTabsIntent: CustomTabsIntent = CustomTabsIntent.Builder().build()
             customTabsIntent.launchUrl(context, Uri.parse(url))
-        }
-        catch (ignored: Exception) {
+        } catch (ignored: Exception) {
 
             try {
 
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 context.startActivity(browserIntent)
-            }
-            catch (ignored2 : Exception) {
+            } catch (ignored2: Exception) {
 
             }
         }

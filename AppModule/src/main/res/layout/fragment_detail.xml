@@ -10,7 +10,7 @@
 
         <variable
             name="news"
-            type="com.popular.broadcast.domain.schedule.model.News" />
+            type="com.popular.broadcast.domain.dto.model.News" />
 
     </data>
 
@@ -96,6 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:gravity="center_vertical"
+                        android:visibility="gone"
                         android:text="@string/author" />
 
                     <TextView

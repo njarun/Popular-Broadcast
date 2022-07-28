@@ -7,15 +7,15 @@
 
         <item
             android:id="@+id/period_one_day"
-            android:title="@string/one_day"/>
+            android:title="@string/one_day" />
 
         <item
             android:id="@+id/period_seven_days"
-            android:title="@string/seven_days"/>
+            android:title="@string/seven_days" />
 
         <item
             android:id="@+id/period_thirty_days"
-            android:title="@string/thirty_days"/>
+            android:title="@string/thirty_days" />
 
     </group>
 

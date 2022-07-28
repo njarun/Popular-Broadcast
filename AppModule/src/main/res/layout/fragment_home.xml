@@ -40,7 +40,7 @@
                 app:setAdapter="@{adapter}"
                 app:setDataSet="@{viewModel.newsList}"
                 tools:listitem="@layout/layout_news_item"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -32,7 +32,7 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.AppCompat.Light" >
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColor">@color/black</item>
     </style>
 

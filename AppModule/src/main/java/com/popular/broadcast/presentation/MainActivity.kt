@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeNavComponents() {
 
-        if(!::navController.isInitialized) {
+        if (!::navController.isInitialized) {
 
             navController = findNavController(R.id.nav_host_fragment_activity_main)
             setupActionBarWithNavController(this, navController)
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         menuInflater.inflate(R.menu.menu_home, menu)
 
-        when(sessionContext.getNewsFetchPeriod()) {
+        when (sessionContext.getNewsFetchPeriod()) {
 
             1 -> {
                 menu.findItem(R.id.period_one_day).isChecked = true
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId) {
+        when (item.itemId) {
 
             android.R.id.home -> {
 
@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
     private fun reloadHome() {
 
         val id = navController.currentDestination?.id
-        navController.popBackStack(id!!,true)
+        navController.popBackStack(id!!, true)
         navController.navigate(id)
     }
 }

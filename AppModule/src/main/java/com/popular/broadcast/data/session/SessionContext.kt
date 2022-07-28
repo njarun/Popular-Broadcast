@@ -3,36 +3,19 @@ package com.popular.broadcast.data.session
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import javax.inject.Inject
 
-/**
- * Created by Jose on 3/24/16.
- */
+class SessionContext @Inject constructor(context: Context) {
 
-@Module
-@InstallIn(SingletonComponent::class)
-class SessionContext {
+    private val sharedPreferences: SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var editor: SharedPreferences.Editor
     private var newsFetchPeriod: Int? = null
-
-    @Singleton
-    @Provides
-    fun providerSessionContext(@ApplicationContext context: Context) : SessionContext {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        editor = sharedPreferences.edit()
-        return this
-    }
 
     fun getNewsFetchPeriod(): Int {
 
-        if(newsFetchPeriod == null)
+        if (newsFetchPeriod == null)
             newsFetchPeriod = sharedPreferences.getInt("newsFetchPeriod", 7)
 
         return newsFetchPeriod as Int

@@ -1,6 +1,6 @@
 package com.popular.broadcast.di.module
 
-import com.popular.broadcast.data.schedule.api.NewsApi
+import com.popular.broadcast.data.networking.api.NewsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

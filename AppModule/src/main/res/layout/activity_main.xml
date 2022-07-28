@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/action_bar_home"
-        android:id="@+id/action_bar"/>
+    <include
+        layout="@layout/action_bar_home"
+        android:id="@+id/action_bar" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_activity_main"

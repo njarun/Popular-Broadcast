@@ -4,7 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.popular.broadcast.databinding.FragmentHomeBinding
-import com.popular.broadcast.domain.schedule.model.News
+import com.popular.broadcast.domain.dto.model.News
 import com.popular.broadcast.presentation.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
             it.getContentIfNotHandled()?.let { transportData ->
 
-                when(transportData) {
+                when (transportData) {
 
                     is HomeViewModel.Interactor.UserClick -> {
 

@@ -1,7 +1,7 @@
 package com.popular.broadcast.di.module
 
-import com.popular.broadcast.data.schedule.repository.NewsRepositoryImpl
-import com.popular.broadcast.domain.schedule.repository.NewsRepository
+import com.popular.broadcast.data.networking.repository.NewsRepositoryImpl
+import com.popular.broadcast.domain.dto.repository.NewsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

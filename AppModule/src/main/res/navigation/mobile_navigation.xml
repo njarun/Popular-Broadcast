@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.popular.broadcast.presentation.home.HomeFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_navigation_home_to_navigation_detail"
@@ -23,11 +23,11 @@
     <fragment
         android:id="@+id/navigation_detail"
         android:name="com.popular.broadcast.presentation.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
 
         <argument
             android:name="newsItem"
-            app:argType="com.popular.broadcast.domain.schedule.model.News" />
+            app:argType="com.popular.broadcast.domain.dto.model.News" />
 
     </fragment>
 

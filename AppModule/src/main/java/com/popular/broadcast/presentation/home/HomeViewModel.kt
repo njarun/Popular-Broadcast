@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.popular.broadcast.Config
 import com.popular.broadcast.data.session.SessionContext
-import com.popular.broadcast.domain.schedule.model.News
-import com.popular.broadcast.domain.schedule.model.NewsRequest
-import com.popular.broadcast.domain.schedule.usecase.GetNews
+import com.popular.broadcast.domain.dto.model.News
+import com.popular.broadcast.domain.dto.model.NewsRequest
+import com.popular.broadcast.domain.usecase.GetNews
 import com.popular.broadcast.presentation.base.Event
 import com.popular.broadcast.util.ExceptionParser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,10 +17,12 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel @Suppress("UNCHECKED_CAST")
+@HiltViewModel
+@Suppress("UNCHECKED_CAST")
 class HomeViewModel @Inject constructor(
-        private val getNews: GetNews,
-        private val sessionContext: SessionContext) : ViewModel(), NewsListener {
+    private val getNews: GetNews,
+    private val sessionContext: SessionContext
+) : ViewModel(), NewsListener {
 
     private val _newsList = MutableLiveData<List<News>>()
     val newsList: LiveData<List<News>> = _newsList
@@ -48,8 +50,8 @@ class HomeViewModel @Inject constructor(
 
                 getNews.fetchNews(requestParam).onStart {
 
-                        _viewRefreshState.postValue(true)
-                    }
+                    _viewRefreshState.postValue(true)
+                }
                     .catch {
 
                         _viewRefreshState.postValue(false)
@@ -60,15 +62,13 @@ class HomeViewModel @Inject constructor(
                         if (it is Boolean) {
 
                             _viewRefreshState.postValue(it)
-                        }
-                        else {
+                        } else {
 
                             _viewRefreshState.postValue(false)
                             _newsList.value = it as List<News>
                         }
                     }
-            }
-            catch (error: Exception) {
+            } catch (error: Exception) {
 
                 postError(ExceptionParser.getMessage(error))
             }
@@ -77,9 +77,10 @@ class HomeViewModel @Inject constructor(
 
     fun checkIfDataHasToBeFetched() {
 
-        if(viewRefreshState.value?.not() == true &&
+        if (viewRefreshState.value?.not() == true &&
             (newsList.value?.size ?: 0) == 0 &&
-            interactorBridge.value?.peekContent() is Interactor.Message) {
+            interactorBridge.value?.peekContent() is Interactor.Message
+        ) {
 
             fetchNews()
         }

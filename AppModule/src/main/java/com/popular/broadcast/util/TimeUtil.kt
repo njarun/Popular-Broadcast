@@ -43,15 +43,18 @@ object TimeUtil {
         return date.time
     }
 
-    fun getTimestamp(format1: String, dateString1: String?, format2: String, dateString2: String?): Long {
+    fun getTimestamp(
+        format1: String,
+        dateString1: String?,
+        format2: String,
+        dateString2: String?
+    ): Long {
 
-        val date = if(!dateString1.isNullOrEmpty()) {
+        val date = if (!dateString1.isNullOrEmpty()) {
             SimpleDateFormat(format1).parse(dateString1) ?: Date()
-        }
-        else if(!dateString2.isNullOrEmpty()) {
+        } else if (!dateString2.isNullOrEmpty()) {
             SimpleDateFormat(format2).parse(dateString2) ?: Date()
-        }
-        else {
+        } else {
             Date()
         }
 

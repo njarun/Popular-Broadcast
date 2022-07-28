@@ -8,7 +8,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<BINDING : ViewDataBinding, T : BaseListItem>(
-    var data: List<T>) : RecyclerView.Adapter<BaseViewHolder<BINDING>>() {
+    var data: List<T>
+) : RecyclerView.Adapter<BaseViewHolder<BINDING>>() {
 
     @get:LayoutRes
     abstract val layoutId: Int

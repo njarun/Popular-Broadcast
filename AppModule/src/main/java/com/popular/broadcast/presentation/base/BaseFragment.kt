@@ -41,7 +41,7 @@ abstract class BaseFragment<T> : Fragment() {
 
         super.onStart()
 
-        if(activity is MainActivity) {
+        if (activity is MainActivity) {
 
             val iconsVisibility = determineActionItemsVisibility()
 
@@ -77,7 +77,7 @@ abstract class BaseFragment<T> : Fragment() {
 
     protected fun hideToast() {
 
-        if(toast != null) {
+        if (toast != null) {
 
             toast!!.cancel()
             toast = null

@@ -9,7 +9,7 @@
 
         <variable
             name="news"
-            type="com.popular.broadcast.domain.schedule.model.News" />
+            type="com.popular.broadcast.domain.dto.model.News" />
 
         <variable
             name="listener"
