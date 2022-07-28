@@ -14,7 +14,7 @@
 
         <variable
             name="adapter"
-            type="com.popular.broadcast.presentation.home.NewsAdapterNew" />
+            type="com.popular.broadcast.presentation.home.NewsAdapter" />
 
     </data>
 

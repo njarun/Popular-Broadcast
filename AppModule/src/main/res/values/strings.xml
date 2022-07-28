@@ -8,6 +8,7 @@
     <string name="error_not_found">Error: Not Found</string>
     <string name="network_fetch_failed">Error in fetching news from server!</string>
     <string name="news_published_updated_date">News published/updated date</string>
+    <string name="out_of_scope_functionalities">Functionality not mentioned in Task</string>
 
     <string name="section">Section:</string>
     <string name="author">Author:</string>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ViewDataBinding
@@ -13,6 +14,17 @@ import com.bumptech.glide.Glide
 import com.popular.broadcast.R
 import com.popular.broadcast.presentation.base.list.BaseAdapter
 import com.popular.broadcast.presentation.base.list.BaseListItem
+
+@BindingAdapter("showToast")
+fun View.showToast(message: String?) {
+
+    message?.let {
+
+        setOnClickListener {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
+    }
+}
 
 @BindingAdapter("manageState")
 fun SwipeRefreshLayout.manageState(state: Boolean) {

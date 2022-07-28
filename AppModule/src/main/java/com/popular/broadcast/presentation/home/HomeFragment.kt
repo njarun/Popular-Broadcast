@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             lifecycleOwner = activity
 
             viewModel = homeViewModel
-            adapter = NewsAdapterNew(listOf(), homeViewModel)
+            adapter = NewsAdapter(listOf(), homeViewModel)
         }
 
         homeViewModel.getInteractor().observe(this) {
