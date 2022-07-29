@@ -1,5 +1,5 @@
-
 ## Most Viewed Articles - Test Application
+[![codecov](https://codecov.io/gh/njarun/Popular-Broadcast/branch/main/graph/badge.svg?token=N4I2MIEZHC)](https://codecov.io/gh/njarun/Popular-Broadcast)   
 
 ### Implementation:
 A simple list/detail app to load the most viewed articles that are fetched from an API or loaded from local database. 
@@ -46,22 +46,22 @@ Kotlin
 5. Hilt for member instance
 6. Day/Night theme support
 
+### View Coverage:    
+[Codecov](https://app.codecov.io/gh/njarun/Popular-Broadcast)
+
 ### Application file, Coverage, test results and screenshots:   
-[Resource Folder](https://drive.neptunelabs.xyz/s/BroadcastApp)   
-[Direct APK Link](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2F&files=Broadcast%20%28Popular%20Articles%20App%29.apk)
+[Resource Folder](https://drive.neptunelabs.xyz/s/BroadcastApp)      
+[Direct APK Link](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2F&files=Broadcast%20%28Popular%20Articles%20App%29.apk)   
 
-### To Generate a new coverage:   
-1. Clone the repo to local machine
-
-2. In terminal projects root folder enter   
-   gradlew connectedCheck
-
-3. And for unit test and instrumented test reports
-a) gradlew testDebugUnitTest   
-b) gradlew connectedDebugAndroidTest
-
+### To Generate a new coverage from cli:   
+1. Clone the repo to local machine   
+2. Open terminal in projects root folder and execute 'gradlew connectedCheck'   
+3. And for unit test and instrumented test reports, execute    
+a) gradlew testDebugUnitTest    
+b) gradlew connectedDebugAndroidTest    
+   
 Generated reports will be available in the build folder with path:   
-AppModule > build > reports >
+AppModule > build > reports >   
 
 ### Screenshots:
 
