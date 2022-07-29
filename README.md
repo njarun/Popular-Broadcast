@@ -57,7 +57,7 @@ Kotlin
    gradlew connectedCheck
 
 3. And for unit test and instrumented test reports
-a) gradlew testDebugUnitTest
+a) gradlew testDebugUnitTest   
 b) gradlew connectedDebugAndroidTest
 
 Generated reports will be available in the build folder with path:   
@@ -72,17 +72,17 @@ AppModule > build > reports >
 
 **Detail Page:**
 
-<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_2_Home.png" width="360" height="780">
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_2_Detail.png" width="360" height="780">
 
 
 **Tab View:**
 
-<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_3_Home.png" width="360" height="780">
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_3_Tab.png" width="360" height="780">
 
 
 **Options Menu:**
 
-<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_4_Home.png" width="360" height="780">
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_4_Options.png" width="360" height="780">
 
 
 **Dark Theme - Home:**
