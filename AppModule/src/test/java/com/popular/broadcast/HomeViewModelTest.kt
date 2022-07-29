@@ -47,9 +47,7 @@ class HomeViewModelTest {
 
         viewModel = HomeViewModel(getNews, sessionContext)
 
-        val jacocoTest = viewModel.viewRefreshState.value
-
-        Assert.assertEquals(jacocoTest, viewModel.viewRefreshState.value)
+        Assert.assertEquals(false, viewModel.viewRefreshState.value)
     }
 
     @Test
