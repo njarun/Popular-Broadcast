@@ -7,6 +7,7 @@ import kotlinx.coroutines.test.*
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 import kotlin.coroutines.ContinuationInterceptor
+import kotlin.coroutines.EmptyCoroutineContext
 
 @ExperimentalCoroutinesApi
 class MainCoroutineRule : TestWatcher(), TestCoroutineScope by createTestCoroutineScope(

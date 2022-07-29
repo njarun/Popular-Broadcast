@@ -17,6 +17,24 @@ buildscript {
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.42"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
         classpath "androidx.arch.core:core-testing:2.1.0@aar"
+        classpath "org.jacoco:org.jacoco.core:0.8.4"
+    }
+}
+
+allprojects {
+
+    repositories {
+
+    }
+
+    configurations.all {
+
+        resolutionStrategy {
+
+            force "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
+            force "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion"
+            force "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion"
+        }
     }
 }
 
@@ -35,4 +53,6 @@ ext {
     MIN_SDK_VERSION = 21
 
     JAVA_VERSION = JavaVersion.VERSION_11
+
+    kotlinCoroutinesVersion = '1.6.4'
 }

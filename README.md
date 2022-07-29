@@ -17,7 +17,7 @@ Kotlin
 3. Usage of Jetpack components such as Room, NavGraph, View/DataBinding, ViewModel, LiveData...
 4. Kotlin Coroutines/Flow
 5. Retrofit/okHttp/Gson network layer
-6. Unit/Instrumentation tests for Api, Database, ViewModel and App UI
+6. Coverage report, Unit/Instrumented tests for Api, Database, ViewModel and App UI
 
 **Database used:**   
 [Room](https://developer.android.com/jetpack/androidx/releases/room)
@@ -46,33 +46,46 @@ Kotlin
 5. Hilt for member instance
 6. Day/Night theme support
 
-### Application file, screenshots and test results:   
+### Application file, Coverage, test results and screenshots:   
 [Resource Folder](https://drive.neptunelabs.xyz/s/BroadcastApp)   
 [Direct APK Link](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2F&files=Broadcast%20%28Popular%20Articles%20App%29.apk)
+
+### To Generate a new coverage:   
+1. Clone the repo to local machine
+
+2. In terminal projects root folder enter   
+   gradlew connectedCheck
+
+3. And for unit test and instrumented test reports
+a) gradlew testDebugUnitTest
+b) gradlew connectedDebugAndroidTest
+
+Generated reports will be available in the build folder with path:   
+AppModule > build > reports >
 
 ### Screenshots:
 
 **Home List Page:**     
 
-![Home List Page](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_1_Home.png =360x780)
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_1_Home.png" width="360" height="780">
 
 
 **Detail Page:**
 
-![Detail Page](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_2_Home.png =360x780)
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_2_Home.png" width="360" height="780">
 
 
 **Tab View:**
 
-![Tab View](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_3_Home.png =360x780)
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_3_Home.png" width="360" height="780">
 
 
 **Options Menu:**
 
-![Options Menu](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_4_Home.png =360x780)
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Day_4_Home.png" width="360" height="780">
 
 
 **Dark Theme - Home:**
 
-![Dark Theme - Home](https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Night_1_Home.png =360x780)
+<img src="https://drive.neptunelabs.xyz/s/BroadcastApp/download?path=%2FScreenshots&files=Night_1_Home.png" width="360" height="780">
 
