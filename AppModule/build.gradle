@@ -88,6 +88,16 @@ android {
         }
     }
 
+    signingConfigs { //Dummy test key! -- nj
+
+        release {
+            storeFile file("nytmpb")
+            storePassword 'nytmpb'
+            keyAlias 'nytmpb'
+            keyPassword 'nytmpb'
+        }
+    }
+
     buildTypes {
 
         debug {
@@ -96,15 +106,19 @@ android {
 
             buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com\"")
             buildConfigField("String", "API_KEY", "\"csAgk6etlL6dMxTiTnKQXVrVvfskXk4k\"")
+
+            signingConfig signingConfigs.release
         }
 
         release {
 
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com\"")
             buildConfigField("String", "API_KEY", "\"csAgk6etlL6dMxTiTnKQXVrVvfskXk4k\"")
+
+            signingConfig signingConfigs.release
         }
     }
 

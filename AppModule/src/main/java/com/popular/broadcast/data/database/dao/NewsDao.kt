@@ -12,9 +12,6 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(news: List<NewsEntity>)
 
-    @Query("SELECT COUNT(id) FROM news")
-    fun getCount(): Int
-
     @Query("SELECT * FROM news WHERE updated >= :to ORDER BY updated DESC")
     fun getNews(to: Long): List<NewsEntity>
 
