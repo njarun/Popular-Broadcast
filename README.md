@@ -1,5 +1,5 @@
 ## Most Viewed Articles - Test Application
-[![codecov](https://codecov.io/gh/njarun/Popular-Broadcast/branch/main/graph/badge.svg?token=N4I2MIEZHC)](https://codecov.io/gh/njarun/Popular-Broadcast)   
+[![CI](https://github.com/njarun/Popular-Broadcast/actions/workflows/android.yml/badge.svg)](https://github.com/njarun/Popular-Broadcast/actions/workflows/android.yml) [![codecov](https://codecov.io/gh/njarun/Popular-Broadcast/branch/main/graph/badge.svg?token=N4I2MIEZHC)](https://codecov.io/gh/njarun/Popular-Broadcast)  
 
 ### Implementation:
 A simple list/detail app to load the most viewed articles that are fetched from an API or loaded from local database. 
