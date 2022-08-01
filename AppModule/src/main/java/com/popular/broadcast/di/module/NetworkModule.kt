@@ -3,7 +3,6 @@ package com.popular.broadcast.di.module
 import android.content.Context
 import com.popular.broadcast.BuildConfig
 import com.popular.broadcast.data.networking.CoroutineDispatcherProvider
-import com.popular.broadcast.data.networking.mock.MockRequestInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +28,6 @@ object NetworkModule {
         return OkHttpClient.Builder()
             .addInterceptor(logging)
             .connectTimeout(30, TimeUnit.SECONDS)
-            .addInterceptor(MockRequestInterceptor(context))
             .build()
     }
 
