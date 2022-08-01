@@ -32,7 +32,8 @@
   *** rewind();
 }
 
--keep class com.popular.broadcast.domain.dto.model.News { *; }
+-keep class com.popular.broadcast.data.dto.** { *; }
+-keep class com.popular.broadcast.domain.dto.** { *; }
 -keep class com.popular.broadcast.presentation.base.BindingAdaptersKt { *; }
 -keepclassmembers class com.popular.broadcast.presentation.base.BindingAdaptersKt  { *;}
 -keep class * extends com.popular.broadcast.presentation.base.BindingAdaptersKt { *; }
