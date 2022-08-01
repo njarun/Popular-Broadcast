@@ -106,8 +106,6 @@ android {
 
             buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com\"")
             buildConfigField("String", "API_KEY", "\"csAgk6etlL6dMxTiTnKQXVrVvfskXk4k\"")
-
-            signingConfig signingConfigs.release
         }
 
         release {
