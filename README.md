@@ -18,6 +18,7 @@ Kotlin
 4. Kotlin Coroutines/Flow
 5. Retrofit/okHttp/Gson network layer
 6. Coverage report, Unit/Instrumented tests for Api, Database, ViewModel and App UI
+7. Code Obfuscation
 
 **Database used:**   
 [Room](https://developer.android.com/jetpack/androidx/releases/room)
