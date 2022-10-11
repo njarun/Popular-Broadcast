@@ -1,4 +1,4 @@
-package com.popular.broadcast.data.networking.api
+package com.popular.broadcast.data.router.api
 
 import com.popular.broadcast.BuildConfig
 import com.popular.broadcast.data.dto.model.NewsResponse

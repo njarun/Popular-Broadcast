@@ -1,4 +1,4 @@
-package com.popular.broadcast.data.networking
+package com.popular.broadcast.data.router
 
 import kotlinx.coroutines.Dispatchers
 

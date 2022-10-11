@@ -1,6 +1,6 @@
 package com.popular.broadcast.di.module
 
-import com.popular.broadcast.data.networking.repository.NewsRepositoryImpl
+import com.popular.broadcast.data.router.repository.NewsRepositoryImpl
 import com.popular.broadcast.domain.dto.repository.NewsRepository
 import dagger.Binds
 import dagger.Module

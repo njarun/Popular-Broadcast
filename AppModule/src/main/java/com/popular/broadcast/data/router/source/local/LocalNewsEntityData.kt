@@ -1,9 +1,9 @@
-package com.popular.broadcast.data.networking.source.local
+package com.popular.broadcast.data.router.source.local
 
 import com.popular.broadcast.data.database.dao.NewsDao
 import com.popular.broadcast.data.dto.mapper.NewsEntityMapper.toNewsList
 import com.popular.broadcast.data.dto.mapper.NewsMapper.toNewsEntities
-import com.popular.broadcast.data.networking.source.NewsEntityData
+import com.popular.broadcast.data.router.source.NewsEntityData
 import com.popular.broadcast.domain.dto.model.News
 import com.popular.broadcast.domain.dto.model.NewsRequest
 import java.util.*

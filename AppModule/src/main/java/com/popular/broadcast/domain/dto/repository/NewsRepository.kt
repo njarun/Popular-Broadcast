@@ -9,5 +9,7 @@ interface NewsRepository {
 
     suspend fun getNewsFromLocal(newsRequest: NewsRequest): List<News>
 
-    suspend fun saveNews(newsList: List<News>)
+    suspend fun saveNews(newsList: List<News>) {
+
+    }
 }

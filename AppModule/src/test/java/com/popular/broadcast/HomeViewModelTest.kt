@@ -1,8 +1,8 @@
 package com.popular.broadcast
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.popular.broadcast.data.networking.CoroutineDispatcherProvider
-import com.popular.broadcast.data.networking.repository.NewsRepositoryImpl
+import com.popular.broadcast.data.router.CoroutineDispatcherProvider
+import com.popular.broadcast.data.router.repository.NewsRepositoryImpl
 import com.popular.broadcast.data.session.SessionContext
 import com.popular.broadcast.domain.dto.model.News
 import com.popular.broadcast.domain.dto.model.NewsRequest

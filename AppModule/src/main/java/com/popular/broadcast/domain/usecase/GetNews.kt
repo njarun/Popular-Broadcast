@@ -1,6 +1,6 @@
 package com.popular.broadcast.domain.usecase
 
-import com.popular.broadcast.data.networking.CoroutineDispatcherProvider
+import com.popular.broadcast.data.router.CoroutineDispatcherProvider
 import com.popular.broadcast.domain.dto.model.News
 import com.popular.broadcast.domain.dto.model.NewsRequest
 import com.popular.broadcast.domain.dto.repository.NewsRepository
