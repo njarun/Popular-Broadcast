@@ -13,7 +13,7 @@ Kotlin
 
 **Project Highlights:**   
 1. Object oriented programming approach
-2. DI using Hilt
+2. DI using [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 3. Usage of Jetpack components such as Room, NavGraph, View/DataBinding, ViewModel, LiveData...
 4. Kotlin Coroutines/Flow
 5. Retrofit/okHttp/Gson network layer
